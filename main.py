@@ -20,7 +20,7 @@ app.add_middleware(
 # ========================
 # CONFIG
 # ========================
-URL = "https://heavstal-tech.vercel.app/api/v1/jeden"
+URL = "https://heavstal.com.ng/api/v1/jeden"
 HEADERS = {
     "Content-Type": "application/json",
     "x-api-key": "ht_live_6cbb8dda46ca1dc0ed10d95953a9a6575df61f0781dda42a"
