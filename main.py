@@ -157,16 +157,29 @@ Energy: {igris_state['energy']}
 """
 
     try:
-        res = requests.post(URL, headers=HEADERS, json={
+    res = requests.post(
+        URL,
+        headers=HEADERS,
+        json={
             "prompt": prompt,
             "persona": PERSONA
-        }, timeout=15)
+        },
+        timeout=15
+    )
 
-        msg = res.json()["data"]["response"]
+    print("STATUS:", res.status_code)
+    print("TEXT:", res.text)
 
-    except:
-        msg = "The shadows are unstable... yet I remain, mortal."
+    data = res.json()
 
+    msg = data.get("data", {}).get(
+        "response",
+        "No response from shadows."
+    )
+
+except Exception as e:
+    print("ERROR:", str(e))
+    msg = f"ERROR: {str(e)}"
     history.append(f"[IGris]: {msg}")
     sessions[user_id] = trim(history)
 
