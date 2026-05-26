@@ -178,6 +178,9 @@ Energy: {igris_state['energy']}
 # ========================
 # API ROUTE
 # ========================
+@app.get('/')
+def home():
+    return {'status':'active'}
 @app.post("/igris")
 async def chat(user: UserInput, request: Request):
 
